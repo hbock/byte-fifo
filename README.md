@@ -58,6 +58,7 @@ f.write(b"Testing")
 f.resize(20)
 # returns b"Testing"
 f.read(len(f))
+```
 
 ### Writing more data than allocated
 
