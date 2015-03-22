@@ -12,12 +12,16 @@ class BytesFIFO(object):
         self._read_ptr = 0
         self._write_ptr = 0
 
-    def read(self, size):
+    def read(self, size=-1):
         """
         Read at most ``size`` bytes from the FIFO.
         
-        If less than ``size`` bytes are available, return all remaining bytes.
+        If less than ``size`` bytes are available, or ``size`` is negative,
+        return all remaining bytes.
         """
+        if size < 0:
+            size = self._filled
+        
         # Go to read pointer
         self._buffer.seek(self._read_ptr)
 

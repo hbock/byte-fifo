@@ -160,3 +160,10 @@ class BytesFIFO(unittest.TestCase):
         self.assertEqual(b"1234567890", self.f.read(20))
         self.assertTrue(self.f.empty())
 
+    def test_read_negative(self):
+        self.f.write(b"Underwood")
+        self.assertEqual(b"Underwood", self.f.read(-1))
+
+    def test_read_default(self):
+        self.f.write(b"Underwood")
+        self.assertEqual(b"Underwood", self.f.read())
